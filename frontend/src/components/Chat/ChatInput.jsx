@@ -1,0 +1,1 @@
+function ChatInput() { return <div></div>; }
