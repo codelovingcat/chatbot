@@ -1,0 +1,1 @@
+function ChatWindow() { return <div></div>; }
