@@ -33,6 +33,56 @@ gh issue create --title "Infrastructure: OpenAI client skeleton (no keys yet)" -
 
 gh issue create --title ".env.example dosyalarının oluşturulması (backend + frontend)" --label "todo" --body $'Amaç:\nProje için örnek environment dosyaları oluşturmak; geliştiricilerin hangi değişkenleri dolduracaklarını bilmeleri amaçlanıyor.\n\nKabul Kriterleri:\n- backend/.env.example ve frontend/.env.example dosyaları eklenmiş.\n- İçerik: BACKEND_PORT, API_URL, DATABASE_URL (placeholder), FIREBASE_DB_URL (placeholder), VITE_API_URL vb.\n\nAdımlar/Implementation:\n1) backend/.env.example dosyasını oluştur ve gerekli anahtar isimlerini ekle.\n2) frontend/.env.example (Vite veya CRA kullanıyorsan REACT_APP_ prefix) ekle.\n3) README\'ye environment setup adımı kısa not olarak ekle.\n\nNotlar:\n- Gerçek secretlar asla repo\'ya pushlanmasın; GitHub Secrets veya hosting secrets kullanılacak.'"
 
+gh issue create \
+--title "Backend: Environment (.env) ve config yönetiminin netleştirilmesi" \
+--label "backend,config,phase-2" \
+--body "Backend tarafında environment yönetimi yapılacak. .env örneği oluşturulacak, config değerleri (DB_URL, API_KEYS vb.) merkezi bir yapıdan okunacak. Güvenli olmayan değerler repoya girmeyecek. FastAPI config pattern uygulanacak."
+
+gh issue create \
+--title "Backend: Supabase bağlantısının kurulması (DB + Auth hazırlığı)" \
+--label "backend,database,phase-2" \
+--body "Supabase projesi oluşturulacak. Backend tarafında Supabase client entegre edilecek. Şimdilik sadece bağlantı ve test endpointi yazılacak. CRUD yok, sadece bağlantı doğrulama."
+
+gh issue create \
+--title "Backend: User modeli ve temel user schema'larının oluşturulması" \
+--label "backend,domain,phase-2" \
+--body "Domain/users altında User entity ve Pydantic schema'lar (CreateUser, UserResponse vb.) oluşturulacak. Auth henüz bağlanmayacak, sadece modelleme yapılacak."
+
+gh issue create \
+--title "Backend: Chatbot için ilk API endpoint'inin hazırlanması" \
+--label "backend,api,phase-2" \
+--body "Chatbot için basit bir POST endpoint oluşturulacak. Request olarak mesaj alacak, response olarak şimdilik sabit veya mock bir cevap dönecek. Amaç frontend-backend bağlantısını test etmek."
+
+gh issue create \
+--title "Frontend: API client ile backend'e bağlanan ilk chat isteği" \
+--label "frontend,api,phase-2" \
+--body "Frontend'de apiClient kullanılarak backend chatbot endpoint'ine istek atılacak. Response console.log veya basit state ile ekrana yazdırılacak."
+
+gh issue create \
+--title "Frontend: ChatWindow bileşeninin state ve message akışıyla güçlendirilmesi" \
+--label "frontend,ui,phase-2" \
+--body "ChatWindow component'i message state tutacak hale getirilecek. Kullanıcı mesajı ve bot mesajı ayrı ayrı render edilecek. Stil minimal olabilir."
+
+gh issue create \
+--title "Frontend: ChatInput submit -> API çağrısı -> response akışı" \
+--label "frontend,logic,phase-2" \
+--body "ChatInput submit edildiğinde backend'e mesaj gönderilecek. Gelen response ChatWindow'da gösterilecek. Loading durumu eklenebilir."
+
+gh issue create \
+--title "Auth hazırlığı: Login sayfası için dummy akış oluşturulması" \
+--label "frontend,auth,phase-2" \
+--body "Login sayfasında gerçek auth olmadan dummy login akışı kurulacak. Amaç routing, context ve kullanıcı state'inin test edilmesi."
+
+gh issue create \
+--title "Frontend: Global kullanıcı state (AuthContext) oluşturulması" \
+--label "frontend,context,phase-2" \
+--body "AuthContext oluşturulacak. Kullanıcı bilgisi, login/logout fonksiyonları burada tutulacak. Şimdilik fake data ile çalışabilir."
+
+gh issue create \
+--title "Proje genel temizlik: README güncelleme ve çalışma adımlarının yazılması" \
+--label "docs,cleanup,phase-2" \
+--body "README.md güncellenecek. Backend nasıl çalıştırılır, frontend nasıl ayağa kaldırılır, env örneği nedir adım adım yazılacak."
+
 echo "All sprint-2 issues created."
 
 
